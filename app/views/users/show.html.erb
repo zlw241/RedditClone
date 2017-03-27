@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+
+<p>
+  <strong>Username:</strong>
+  <%= @user.username %>
+</p>
+
+<ul>
+<% @user.subs.each do |sub| %>
+  <li><a href="<%= sub_url(sub) %>"><%= sub.title %></a></li>
+<% end %>
+</ul>

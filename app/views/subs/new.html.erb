@@ -1,0 +1,20 @@
+<h1 style="display: inline;">New Sub</h1>
+
+
+<a href="<%= subs_url %>">Back to all subs</a>
+<br><br>
+
+<form action="<%= subs_url %>" method="post">
+  <%= auth_tok %>
+
+  <label for="sub_title">Title</label>
+  <input id="sub_title" name="sub[title]">
+
+  <label for="sub_description">Description</label>
+  <input id="sub_description" name="sub[description]">
+
+  <br><br>
+
+  <input type="submit" value="Create Subreddit">
+
+</form>

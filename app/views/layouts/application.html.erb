@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RedditClone</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+    <ul>
+    <li style="display: inline;"><a href="<%= subs_url %>">Subs</a></li>
+    <% if signed_in? %>
+    <li style="display: inline;"><a href="<%= user_url(current_user) %>">Profile</a></li>
+    <li style="display: inline;"><a href="<%= new_sub_url %>">New Sub</a></li>
+    <%= current_user.username %>
+    <li style="display: inline;">
+      <form style="display: inline;" class="" action="<%= session_url %>" method="post">
+        <%= auth_tok %>
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" name="" value="Sign Out">
+      </form>
+    </li>
+    <% else %>
+      <li style="display: inline;"><a href="<%= new_session_url %>">Sign In</a></li>
+      <li style="display: inline;"><a href="<%= new_user_url %>">Sign Up</a></li>
+    <% end %>
+
+    </ul>
+    <%= yield %>
+
+    <%= render "layouts/errors" %>
+  </body>
+</html>
