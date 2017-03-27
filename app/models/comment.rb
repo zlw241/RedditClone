@@ -14,11 +14,19 @@
 class Comment < ApplicationRecord
 
   validates :content, :user_id, :post_id, presence: true
+  
+  belongs_to :author,
+    class_name: "User",
+    foreign_key: :user_id
 
-  belongs_to :user
-  belongs_to :parent_comment
+  belongs_to :parent_comment,
+    class_name: "Comment",
+    foreign_key: :parent_comment_id,
+    optional: true
+
   belongs_to :post
 
-  has_many :child_comments
-
+  has_many :child_comments,
+    class_name: "Comment",
+    foreign_key: :parent_comment_id
 end

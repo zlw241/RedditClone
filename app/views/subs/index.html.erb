@@ -17,7 +17,7 @@
       <tr>
         <td><%= sub.title %></td>
         <td><%= sub.description %></td>
-        <td><%= sub.user_id %></td>
+        <td><%= sub.moderator.username %></td>
         <td><%= link_to 'Show', sub %></td>
         <td><%= link_to 'Edit', edit_sub_path(sub) %></td>
         <td><%= link_to 'Destroy', sub, method: :delete, data: { confirm: 'Are you sure?' } %></td>

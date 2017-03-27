@@ -21,6 +21,15 @@
   <%= @post.content %>
 </p>
 
+<h3>Comments</h3>
 
-<a href="<%= subs_url %>">Back</a> |
-<a href="<%= edit_post_url(@post) %>">Edit</a>
+<form class="" action="<%= post_comments_url(@post) %>" method="post">
+  <%= auth_tok %>
+  <textarea name="comment[content]" rows="8" cols="80"></textarea><br>
+  <input type="submit" value="Add Comment">
+</form>
+
+<% @post.comments.each do |comment| %>
+<a href="<%= user_url(comment.author) %>"><%= comment.author.username %></a>
+<p><%= comment.content %></p>
+ <% end %>

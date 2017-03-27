@@ -22,6 +22,7 @@ class User < ApplicationRecord
 
   has_many :subs
   has_many :posts
+  has_many :comments
 
   def self.generate_session_token
     SecureRandom.urlsafe_base64(16)
